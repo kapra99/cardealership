@@ -8,7 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import {CarComponent} from "./car/car.component";
+import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'car', component: CarComponent },
+  { path: 'cardetails/:id', component: CatalogItemDetailsComponent },
 ];
 
 @NgModule({

@@ -14,7 +14,8 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { CarComponent } from './car/car.component';
+import { CatalogComponent } from './home/catalog/catalog.component';
+import { CatalogItemDetailsComponent } from './catalog/catalog-item-details/catalog-item-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarComponent } from './car/car.component';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    CarComponent
+    CatalogComponent,
+    CatalogItemDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CatalogComponent } from './home/catalog/catalog.component';
-import { CatalogItemDetailsComponent } from './catalog/catalog-item-details/catalog-item-details.component';
+import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
+
 
 @NgModule({
   declarations: [

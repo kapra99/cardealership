@@ -1,12 +1,12 @@
 <div class="container mt-5">
 	<div class="row">
-		<div *ngFor="let car of carsCatalog" class="col-3">
+		<div *ngFor="let car of cars" class="col-3">
 			<div class="card" style="width: 18rem;">
-				<img src="{{car.carImage}}" class="card-img-top" alt="car">
+				<img src="" class="card-img-top" alt="car">
 				<div class="card-body">
-					<h5 class="card-title">{{car.carName}}</h5>
-					<p class="card-text">{{car.carDescription}}</p>
-					<a [routerLink]="['/cardetails/',car.carId]" routerLinkActive="active" class="btn btn-primary">Find out more</a>
+					<h5 class="card-title">{{car.brand}} {{car.model}} </h5>
+					<p class="card-text">{{car.additionalinformation}}</p>
+					<a [routerLink]="['/cardetails/',car.id]" routerLinkActive="active" class="btn btn-primary">Find out more</a>
 				</div>
 			</div>
 		</div>

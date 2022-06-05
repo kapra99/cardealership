@@ -28,35 +28,35 @@
 			</div>
 			<div class="row">
 				<div class="col mb-2">
-					<span class="fs-5 fw-bold">Година на производство: </span><span class="fs-5">{{currentCar.dateofmanifactory}}</span>
+					<span class="fs-5 fw-bold">Година на производство: </span><span class="fs-5">{{currentCar.dateOfManifactory}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
 					<span class="fs-5 fw-bold">Двигател: </span><span
-					class="fs-5">{{currentCar.engineapacity}}, {{currentCar.fueltype}}</span>
+					class="fs-5">{{currentCar.engineCapacity}}, {{currentCar.fuelType}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
-					<span class="fs-5 fw-bold">Скоростна кутия: </span><span class="fs-5">{{currentCar.gearboxtype}}</span>
+					<span class="fs-5 fw-bold">Скоростна кутия: </span><span class="fs-5">{{currentCar.gearboxType}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
-					<span class="fs-5 fw-bold">Мощност(к.с): </span><span class="fs-5">{{currentCar.horsepower}} к.с</span>
+					<span class="fs-5 fw-bold">Мощност(к.с): </span><span class="fs-5">{{currentCar.horsePower}} к.с</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
-					<span class="fs-5 fw-bold">Тип купе: </span><span class="fs-5">{{currentCar.bodytype}}</span>
+					<span class="fs-5 fw-bold">Тип купе: </span><span class="fs-5">{{currentCar.bodyType}}</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
 					<span class="fs-5 fw-bold">Допълнителна информация:</span>
 					<p class="fs-5">
-						{{currentCar.additionalinformation}}
+						{{currentCar.additionalInformation}}
 					</p>
 				</div>
 			</div>
@@ -64,29 +64,21 @@
 				<div class="col mb-2">
 					<span class="fs-5 fw-bold">Особености и Екстри: </span>
 					<p class="fs-5">
-						<span class="fw-bold">Комфорт: </span> Климатроник, Кожен салон, Ел.стъкла, Ел.огледала,
-						Ел.седалки,
-						Подгряване на седалки, Шибедах, Стерео уредба, Алуминиеви джанти, DVD/TV, Мултифункционален
-						волан
+						<span class="fw-bold">Комфорт: </span> {{currentCar.comfortExtras}}
 					</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
 					<p class="fs-5">
-						<span class="fw-bold">Сигурност: </span> ABS, ESP, Airbag, Ксенонови фарове, ASR/Тракшън
-						контрол,
-						Парктроник, Аларма, Имобилайзер, Центр. заключване, Застраховка, Старт-Стоп система, Безключово
-						палене
+						<span class="fw-bold">Сигурност: </span> {{currentCar.securityExtras}}
 					</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col mb-2">
 					<p class="fs-5">
-						<span class="fw-bold">Друго: </span> AMG пакет, Типтроник/Мултитроник, Автопилот, Серво
-						управление, Бордови
-						компютър, Навигационна система
+						<span class="fw-bold">Друго: </span> {{currentCar.otherExtras}}
 					</p>
 				</div>
 			</div>

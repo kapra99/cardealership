@@ -16,6 +16,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CatalogComponent } from './home/catalog/catalog.component';
 import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
+import { AddCarComponent } from './add-car/add-car.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/c
     BoardModeratorComponent,
     BoardUserComponent,
     CatalogComponent,
-    CatalogItemDetailsComponent
+    CatalogItemDetailsComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,

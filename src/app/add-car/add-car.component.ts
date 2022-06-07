@@ -2,6 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Car} from 'src/app/models/car.model';
 import {CarService} from 'src/app/services/car.service';
 
+interface Fuel {
+	value: string;
+	viewValue: string;
+}
+interface Gearbox {
+	value: string;
+	viewValue: string;
+}
+
 
 @Component({
 	selector: 'app-add-car',
@@ -14,8 +23,8 @@ export class AddCarComponent implements OnInit {
 		model: '',
 		dateOfManifactory: '',
 		engineCapacity: '',
-		fuelType: null,
-		gearboxType: '',
+		fuelType: 'Дизелов',
+		gearboxType: 'Ръчна',
 		horsePower: '',
 		bodyType: '',
 		additionalInformation: '',
@@ -27,15 +36,20 @@ export class AddCarComponent implements OnInit {
 		carImages: ''
 
 	};
+
 	submitted = false;
-	fuelTypes: any = [
-		'Diesel',
-		'Gasoline',
-		'Electrical'
+	fuels: Fuel[] = [
+		{value: 'Дизелов', viewValue: 'Дизелов'},
+		{value: 'Бензинов', viewValue: 'Бензинов'},
+		{value: 'Газ/Бензин', viewValue: 'Газ/Бензинов'},
+		{value: 'Хибрид-Бензин', viewValue: 'Хибрид-Бензин'},
+		{value: 'Хибрид-Дизел', viewValue: 'Хибрид-Дизел'},
+		{value: 'Електрически', viewValue: 'Електрически'},
 	];
-	gearboxTypes: any = [
-		'Manual',
-		'Automatic'
+
+	gearboxes: Gearbox[] = [
+		{value: 'Ръчна', viewValue: 'Ръчна'},
+		{value: 'Автоматична', viewValue: 'Автоматична'},
 	];
 	bodyTypes: any = [
 		'Ван',
@@ -54,6 +68,7 @@ export class AddCarComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+
 	}
 
 

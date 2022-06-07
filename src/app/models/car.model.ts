@@ -5,7 +5,7 @@ export class Car {
 	dateOfManifactory?: string;
 	engineCapacity?: string;
 	fuelType?: any;
-	gearboxType?: string;
+	gearboxType?:any;
 	bodyType?: string;
 	horsePower?: string;
 	additionalInformation?: string;

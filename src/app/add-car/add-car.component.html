@@ -10,31 +10,44 @@
 		</div>
 		<div class="col-12">
 			<label for="dateOfManifactory" class="form-label">Date Of Manifactory</label>
-			<input type="date" class="form-control" id="dateOfManifactory" name="dateOfManifactory" [(ngModel)]="car.dateOfManifactory">
+			<input type="date" class="form-control" id="dateOfManifactory" name="dateOfManifactory"
+				   [(ngModel)]="car.dateOfManifactory">
 		</div>
 		<div class="col-12">
 			<label for="engineCapacity" class="form-label">Engine Capacity</label>
-			<input type="number" class="form-control" id="engineCapacity" name="engineCapacity" [(ngModel)]="car.engineCapacity">
+			<input type="number" class="form-control" id="engineCapacity" name="engineCapacity"
+				   [(ngModel)]="car.engineCapacity">
 		</div>
 		<div class="col-md-4">
 			<label for="fuelType" class="form-label">Fuel Type</label>
-			<select id="fuelType" class="form-select" name="fuelType" [(ngModel)]="car.fuelType">
-				<option [ngValue]="null">Choose...</option>
-				<option [value]="fuelType" *ngFor="let fuelType of fuelTypes; let i = index;">{{fuelType}}<option>
+			<select id="fuelType" class="form-select" aria-label="Fuels" name="fuelType" [(ngModel)]="car.fuelType">
+				<option *ngFor="let fuel of fuels" [value]="fuel.value">
+					{{fuel.viewValue}}
+				</option>
 			</select>
 		</div>
+
 		<div class="col-md-4">
-			<label for="gearboxType" class="form-label">GearboxType</label>
-			<select id="gearboxType" class="form-select" name="gearboxType" [(ngModel)]="car.gearboxType" >
-				<option selected>Choose...</option>
-				<option [ngValue]="gearboxType" *ngFor="let gearboxType of gearboxTypes">{{gearboxType}}<option>
+			<label for="gearboxType" class="form-label">Gearbox Type</label>
+			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="fuelType" [(ngModel)]="car.gearboxType">
+				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">
+					{{gearbox.viewValue}}
+				</option>
 			</select>
 		</div>
+<!--		<div class="col-md-4">-->
+<!--			<label for="gearboxType" class="form-label">GearboxType</label>-->
+<!--			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType" [(ngModel)]="car.gearboxType">-->
+<!--				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">-->
+<!--					{{gearbox.viewValue}}-->
+<!--				<option>-->
+<!--			</select>-->
+<!--		</div>-->
 		<div class="col-md-4">
 			<label for="bodyType" class="form-label">Body Type</label>
-			<select id="bodyType" class="form-select" name="gearboxType" [(ngModel)]="car.bodyType" >
-				<option selected>Choose...</option>
-				<option [ngValue]="bodyType" *ngFor="let bodyType of bodyTypes">{{bodyType}}<option>
+			<select id="bodyType" class="form-select" name="gearboxType" [(ngModel)]="car.bodyType">
+				<option [ngValue]="bodyType" *ngFor="let bodyType of bodyTypes">{{bodyType}}
+				<option>
 			</select>
 		</div>
 		<div class="col-12">
@@ -42,9 +55,22 @@
 			<input type="number" class="form-control" id="horsePower" name="horsePower" [(ngModel)]="car.horsePower">
 		</div>
 		<div class="col-12">
-				<label for="additionalInformation" class="form-label">Additional Information</label>
-				<textarea class="form-control" id="additionalInformation" rows="3" name="additionalInformation" [(ngModel)]="car.additionalInformation"></textarea>
+			<label for="additionalInformation" class="form-label">Additional Information</label>
+			<textarea class="form-control" id="additionalInformation" rows="3" name="additionalInformation"
+					  [(ngModel)]="car.additionalInformation"></textarea>
 		</div>
+<!--		<div class="col-12">-->
+<!--			<div class="form-check">-->
+<!--				<div *ngFor="let extra of bodyTypes">-->
+<!--					<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">-->
+<!--					<label class="form-check-label" for="flexCheckDefault">-->
+<!--						{{extra}}-->
+<!--					</label>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+
 		<div class="col-12">
 			<button (click)="saveCar()" class="mt-3 btn btn-primary">Submit</button>
 			<div *ngIf="submitted">

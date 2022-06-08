@@ -20,34 +20,27 @@
 		</div>
 		<div class="col-md-4">
 			<label for="fuelType" class="form-label">Fuel Type</label>
-			<select id="fuelType" class="form-select" aria-label="Fuels" name="fuelType" [(ngModel)]="car.fuelType">
+			<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType" [(ngModel)]="car.fuelType">
 				<option *ngFor="let fuel of fuels" [value]="fuel.value">
 					{{fuel.viewValue}}
 				</option>
 			</select>
 		</div>
-
 		<div class="col-md-4">
 			<label for="gearboxType" class="form-label">Gearbox Type</label>
-			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="fuelType" [(ngModel)]="car.gearboxType">
+			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType"
+					[(ngModel)]="car.gearboxType">
 				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">
 					{{gearbox.viewValue}}
 				</option>
 			</select>
 		</div>
-<!--		<div class="col-md-4">-->
-<!--			<label for="gearboxType" class="form-label">GearboxType</label>-->
-<!--			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType" [(ngModel)]="car.gearboxType">-->
-<!--				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">-->
-<!--					{{gearbox.viewValue}}-->
-<!--				<option>-->
-<!--			</select>-->
-<!--		</div>-->
 		<div class="col-md-4">
 			<label for="bodyType" class="form-label">Body Type</label>
-			<select id="bodyType" class="form-select" name="gearboxType" [(ngModel)]="car.bodyType">
-				<option [ngValue]="bodyType" *ngFor="let bodyType of bodyTypes">{{bodyType}}
-				<option>
+			<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType" [(ngModel)]="car.bodyType">
+				<option *ngFor="let bodyType of bodyTypes" [value]="bodyType.value">
+					{{bodyType.viewValue}}
+				</option>
 			</select>
 		</div>
 		<div class="col-12">
@@ -59,24 +52,42 @@
 			<textarea class="form-control" id="additionalInformation" rows="3" name="additionalInformation"
 					  [(ngModel)]="car.additionalInformation"></textarea>
 		</div>
-<!--		<div class="col-12">-->
-<!--			<div class="form-check">-->
-<!--				<div *ngFor="let extra of bodyTypes">-->
-<!--					<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">-->
-<!--					<label class="form-check-label" for="flexCheckDefault">-->
-<!--						{{extra}}-->
-<!--					</label>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
+		<div class="col-md-4">
+			<h5>Комфорт</h5>
+			<div class="form-check" *ngFor="let comfortextra of comfortextras; let i = index;">
+					<input class="form-check-input" type="checkbox" [value]="comfortextra.value" (change)="selectedComfortExtras(comfortextra.value)" id="{{'comfortExtraCheckbox'+i}}">
+					<label class="form-check-label" for="{{'comfortExtraCheckbox'+i}}">
+						{{comfortextra.viewValue}}
+					</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h5>Сигурност</h5>
+			<div class="form-check" *ngFor="let securityextra of securityextras; let i = index;">
+				<input class="form-check-input" type="checkbox" [value]="securityextra.value" (change)="selectedSecurityExtras(securityextra.value)" id="{{'securityExtraCheckbox'+i}}">
+				<label class="form-check-label" for="{{'securityExtraCheckbox'+i}}">
+					{{securityextra.viewValue}}
+				</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h5>Сигурност</h5>
+			<div class="form-check" *ngFor="let otherextra of otherextras; let i = index;">
+				<input class="form-check-input" type="checkbox" [value]="otherextra.value" (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
+				<label class="form-check-label" for="{{'otherExtraCheckbox'+i}}">
+					{{otherextra.viewValue}}
+				</label>
+			</div>
+		</div>
+
 
 
 		<div class="col-12">
 			<button (click)="saveCar()" class="mt-3 btn btn-primary">Submit</button>
-			<div *ngIf="submitted">
-				<h4>Tutorial was submitted successfully!</h4>
-				<button class="btn btn-success" (click)="newCar()">Add</button>
-			</div>
+			<!--			<div *ngIf="submitted">-->
+			<!--				<h4>Tutorial was submitted successfully!</h4>-->
+			<!--				<button class="btn btn-success" (click)="newCar()">Add</button>-->
+			<!--			</div>-->
 		</div>
 	</form>
 </div>

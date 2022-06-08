@@ -9,9 +9,9 @@ export class Car {
 	bodyType?: string;
 	horsePower?: string;
 	additionalInformation?: string;
-	comfortExtras?: string;
-	securityExtras?: string;
-	otherExtras?: string;
+	comfortExtras?: any;
+	securityExtras?: any;
+	otherExtras?: any;
 	price?: string;
 	carThumbnail?:string;
 	carImages?:string;

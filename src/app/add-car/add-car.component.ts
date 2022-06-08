@@ -83,43 +83,43 @@ export class AddCarComponent implements OnInit {
 		{value: 'Хечбек', viewValue: 'Хечбек'}
 	];
 	comfortextras: ComfortExtra[] = [
-		{value: 'Климатик', viewValue: 'Климатик'},
-		{value: 'Климатроник', viewValue: 'Климатроник'},
-		{value: 'Ел.стъкла', viewValue: 'Ел.стъкла'},
-		{value: 'Ел.огледала', viewValue: 'Ел.огледала'},
-		{value: 'Ел.седалки', viewValue: 'Ел.седалки'},
-		{value: 'Подгряване на седалки', viewValue: 'Подгряване на седалки'},
-		{value: 'Шибедах', viewValue: 'Шибедах'},
-		{value: 'Стерео уредба', viewValue: 'Стерео уредба'},
-		{value: 'Алуминиеви джанти', viewValue: 'Алуминиеви джанти'},
-		{value: 'DVD/TV', viewValue: 'DVD/TV'},
-		{value: 'Мултифункционален волан', viewValue: 'Мултифункционален волан'},
-		{value: 'Старт-Стоп система', viewValue: 'Старт-Стоп система'},
-		{value: 'Безключово палене', viewValue: 'Безключово палене'},
+		{value: ' Климатик', viewValue: 'Климатик'},
+		{value: ' Климатроник', viewValue: 'Климатроник'},
+		{value: ' Ел.стъкла', viewValue: 'Ел.стъкла'},
+		{value: ' Ел.огледала', viewValue: 'Ел.огледала'},
+		{value: ' Ел.седалки', viewValue: 'Ел.седалки'},
+		{value: ' Подгряване на седалки', viewValue: 'Подгряване на седалки'},
+		{value: ' Шибедах', viewValue: 'Шибедах'},
+		{value: ' Стерео уредба', viewValue: 'Стерео уредба'},
+		{value: ' Алуминиеви джанти', viewValue: 'Алуминиеви джанти'},
+		{value: ' DVD/TV', viewValue: 'DVD/TV'},
+		{value: ' Мултифункционален волан', viewValue: 'Мултифункционален волан'},
+		{value: ' Старт-Стоп система', viewValue: 'Старт-Стоп система'},
+		{value: ' Безключово палене', viewValue: 'Безключово палене'},
 	];
 	securityextras: SecurityExtra[] = [
-		{value: '4x4', viewValue: '4x4'},
-		{value: 'ABS', viewValue: 'ABS'},
-		{value: 'ESP', viewValue: 'ESP'},
-		{value: 'Airbag', viewValue: 'Airbag'},
-		{value: 'Ксенонови фарове', viewValue: 'Ксенонови фарове'},
-		{value: 'Халогенни фарове', viewValue: 'Халогенни фарове'},
-		{value: 'ASR/Тракшън контрол', viewValue: 'ASR/Тракшън контрол'},
-		{value: 'Парктроник', viewValue: 'Парктроник'},
-		{value: 'Аларма', viewValue: 'Аларма'},
-		{value: 'Имобилайзер', viewValue: 'Имобилайзер'},
-		{value: 'Центр. заключване', viewValue: 'Центр. заключване'},
-		{value: 'Брониран', viewValue: 'Брониран'},
+		{value: ' 4x4', viewValue: '4x4'},
+		{value: ' ABS', viewValue: 'ABS'},
+		{value: ' ESP', viewValue: 'ESP'},
+		{value: ' Airbag', viewValue: 'Airbag'},
+		{value: ' Ксенонови фарове', viewValue: 'Ксенонови фарове'},
+		{value: ' Халогенни фарове', viewValue: 'Халогенни фарове'},
+		{value: ' ASR/Тракшън контрол', viewValue: 'ASR/Тракшън контрол'},
+		{value: ' Парктроник', viewValue: 'Парктроник'},
+		{value: ' Аларма', viewValue: 'Аларма'},
+		{value: ' Имобилайзер', viewValue: 'Имобилайзер'},
+		{value: ' Центр. заключване', viewValue: 'Центр. заключване'},
+		{value: ' Брониран', viewValue: 'Брониран'},
 	];
 	otherextras: OtherExtras[] = [
-		{value: 'Автопилот', viewValue: 'Автопилот'},
-		{value: 'Серво управление', viewValue: 'Серво управление'},
-		{value: 'Бордови компютър', viewValue: 'Бордови компютър'},
-		{value: 'Сервизна книжка', viewValue: 'Сервизна книжка'},
-		{value: 'Навигационна система', viewValue: 'Навигационна система'},
-		{value: 'Панорамен покрив', viewValue: 'Панорамен покрив'},
-		{value: 'Теглич', viewValue: 'Теглич'},
-		{value: '7 места (6+1)', viewValue: '7 места (6+1)'}
+		{value: ' Автопилот', viewValue: 'Автопилот'},
+		{value: ' Серво управление', viewValue: 'Серво управление'},
+		{value: ' Бордови компютър', viewValue: 'Бордови компютър'},
+		{value: ' Сервизна книжка', viewValue: 'Сервизна книжка'},
+		{value: ' Навигационна система', viewValue: 'Навигационна система'},
+		{value: ' Панорамен покрив', viewValue: 'Панорамен покрив'},
+		{value: ' Теглич', viewValue: 'Теглич'},
+		{value: ' 7 места (6+1)', viewValue: '7 места (6+1)'}
 	]
 
 	constructor(private carService: CarService) {
@@ -131,18 +131,16 @@ export class AddCarComponent implements OnInit {
 
 	selectedComfortExtras(value: any) {
 		this.car.comfortExtras.push(value);
-		console.log(value);
-		console.log(this.car.comfortExtras);
 	}
 	selectedSecurityExtras(value: any) {
 		this.car.securityExtras.push(value);
-		console.log(value);
-		console.log(this.car.comfortExtras);
+		// console.log(value);
+		// console.log(this.car.comfortExtras);
 	}
 	selectedOtherExtras(value: any) {
 		this.car.otherExtras.push(value);
-		console.log(value);
-		console.log(this.car.comfortExtras);
+		// console.log(value);
+		// console.log(this.car.comfortExtras);
 	}
 
 
@@ -158,11 +156,12 @@ export class AddCarComponent implements OnInit {
 			horsePower: this.car.horsePower,
 			bodyType: this.car.bodyType,
 			additionalInformation: this.car.additionalInformation,
-			comfortExtras: this.car.comfortExtras,
-			securityExtras: this.car.securityExtras,
-			otherExtras: this.car.otherExtras,
+			comfortExtras: this.car.comfortExtras.toString(),
+			securityExtras: this.car.securityExtras.toString(),
+			otherExtras: this.car.otherExtras.toString(),
 			price: this.car.price,
 		};
+
 		this.carService.create(data)
 			.subscribe(
 				response => {

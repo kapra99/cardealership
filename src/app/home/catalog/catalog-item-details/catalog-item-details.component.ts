@@ -28,6 +28,9 @@ export class CatalogItemDetailsComponent implements OnInit {
 	};
 	message = '';
 	carouselArray: any = [];
+	comfortextras: any;
+	securityextras: any;
+	otherextras: any;
 	constructor(
 		private carService: CarService,
 		private route: ActivatedRoute,
@@ -37,6 +40,7 @@ export class CatalogItemDetailsComponent implements OnInit {
 	ngOnInit(): void {
 		this.message = '';
 		this.getCar(this.route.snapshot.params.id);
+
 	}
 
 	getCar(id: string): void {
@@ -44,7 +48,16 @@ export class CatalogItemDetailsComponent implements OnInit {
 			.subscribe(
 				data => {
 					this.currentCar = data;
-					if(this.currentCar.carImages){
+					if(this.currentCar.comfortExtras){
+						this.comfortextras = this.currentCar.comfortExtras.replace('"','').replace('"','');
+					}
+					if(this.currentCar.securityExtras){
+						this.securityextras = this.currentCar.securityExtras.replace('"','').replace('"','');
+					}
+					if(this.currentCar.otherExtras){
+						this.otherextras = this.currentCar.otherExtras.replace('"','').replace('"','');
+					}
+					if (this.currentCar.carImages) {
 						this.carouselArray = this.currentCar.carImages.split(',');
 						console.log(this.carouselArray);
 					}

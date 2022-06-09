@@ -1,0 +1,117 @@
+<div class="container mt-5">
+	<div *ngIf="currentCar.id" class="row">
+		<div class="col-7">
+			<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
+				 data-bs-interval="false">
+				<div class="carousel-inner">
+					<div *ngFor="let carouselImage of carouselArray; let i = index" class="carousel-item" [ngClass]="{'active':i == 1}">
+						<img [src]="carouselImage" class="d-block w-100" alt="car">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+						data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+						data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="row">
+				<div class="col text-center">
+					<h1>{{currentCar.brand}} {{currentCar.model}}</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Година на производство: </span><span class="fs-5">{{currentCar.dateOfManifactory}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Двигател: </span><span
+					class="fs-5">{{currentCar.engineCapacity}}, {{currentCar.fuelType}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Скоростна кутия: </span><span class="fs-5">{{currentCar.gearboxType}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Мощност(к.с): </span><span class="fs-5">{{currentCar.horsePower}} к.с</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Тип купе: </span><span class="fs-5">{{currentCar.bodyType}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Допълнителна информация:</span>
+					<p class="fs-5">
+						{{currentCar.additionalInformation}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<span class="fs-5 fw-bold">Особености и Екстри: </span>
+					<p class="fs-5">
+						<span class="fw-bold">Комфорт: </span> {{this.comfortextras}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<p class="fs-5">
+						<span class="fw-bold">Сигурност: </span> {{this.securityextras}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2">
+					<p class="fs-5">
+						<span class="fw-bold">Друго: </span> {{this.otherextras}}
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col mb-2 text-center">
+					<p class="fs-4 fw-bold">
+						Цена: {{currentCar.price}} лв
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<div>-->
+<!--	<div *ngIf="currentCar.id" class="edit-form">-->
+<!--		<h4>Tutorial</h4>-->
+<!--		<form>-->
+<!--			<div class="form-group">-->
+<!--				<label for="title">Title</label>-->
+<!--				<input-->
+<!--					type="text"-->
+<!--					class="form-control"-->
+<!--					id="title"-->
+<!--					[(ngModel)]="currentCar.brand"-->
+<!--					name="title"-->
+<!--				/>-->
+<!--			</div>-->
+<!--		</form>-->
+<!--		<p>{{ message }}</p>-->
+<!--	</div>-->
+<!--	<div *ngIf="!currentCar.id">-->
+<!--		<br />-->
+<!--		<p>Cannot access this Tutorial...</p>-->
+<!--	</div>-->
+<!--</div>-->

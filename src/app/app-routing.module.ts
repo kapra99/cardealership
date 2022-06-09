@@ -10,9 +10,11 @@ import {BoardModeratorComponent} from './board-moderator/board-moderator.compone
 import {BoardAdminComponent} from './board-admin/board-admin.component';
 import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
 import {AddCarComponent} from "./add-car/add-car.component";
+import {UploadFilesComponent} from "./upload-files/upload-files.component";
 
 
 const routes: Routes = [
+	{path:'upload-files', component:UploadFilesComponent},
 	{path: 'home', component: HomeComponent},
 	{path: 'add-car', component: AddCarComponent},
 	{path: 'login', component: LoginComponent},

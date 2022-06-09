@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Car} from 'src/app/models/car.model';
 import {CarService} from 'src/app/services/car.service';
 
@@ -38,6 +38,7 @@ interface OtherExtras {
 	styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent implements OnInit {
+	@Input()
 	car: Car = {
 		brand: '',
 		model: '',
@@ -160,6 +161,7 @@ export class AddCarComponent implements OnInit {
 			securityExtras: this.car.securityExtras.toString(),
 			otherExtras: this.car.otherExtras.toString(),
 			price: this.car.price,
+			carImages:this.car.carImages
 		};
 
 		this.carService.create(data)

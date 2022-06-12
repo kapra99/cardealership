@@ -18,11 +18,12 @@ import {CatalogComponent} from './home/catalog/catalog.component';
 import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
 import {AddCarComponent} from './add-car/add-car.component';
 import {UploadFilesComponent} from "./upload-files/upload-files.component";
+import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
 
 
 @NgModule({
 	declarations: [
-		UploadFilesComponent,
+		UploadImagesComponent,
 		AppComponent,
 		LoginComponent,
 		RegisterComponent,

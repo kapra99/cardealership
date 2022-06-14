@@ -35,5 +35,6 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+	window.location.href="login";
   }
 }

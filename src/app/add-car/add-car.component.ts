@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Car} from 'src/app/models/car.model';
 import {CarService} from 'src/app/services/car.service';
+import {Router} from "@angular/router";
 
 interface Fuel {
 	value: string;
@@ -38,7 +39,6 @@ interface OtherExtras {
 	styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent implements OnInit {
-	@Input()
 	car: Car = {
 		brand: '',
 		model: '',
@@ -53,8 +53,9 @@ export class AddCarComponent implements OnInit {
 		securityExtras: [],
 		otherExtras: [],
 		price: '',
-		carThumbnail: '',
-		carImages: ''
+		carThumbnail: [],
+		carImages: [],
+		published: false
 
 	};
 	submitted = false;
@@ -84,6 +85,7 @@ export class AddCarComponent implements OnInit {
 		{value: 'Хечбек', viewValue: 'Хечбек'}
 	];
 	comfortextras: ComfortExtra[] = [
+		{value: ' Кожен салон', viewValue: 'Кожен салон'},
 		{value: ' Климатик', viewValue: 'Климатик'},
 		{value: ' Климатроник', viewValue: 'Климатроник'},
 		{value: ' Ел.стъкла', viewValue: 'Ел.стъкла'},
@@ -121,9 +123,11 @@ export class AddCarComponent implements OnInit {
 		{value: ' Панорамен покрив', viewValue: 'Панорамен покрив'},
 		{value: ' Теглич', viewValue: 'Теглич'},
 		{value: ' 7 места (6+1)', viewValue: '7 места (6+1)'}
-	]
+	];
+	currentStep:string = '1';
+	carPictureArray:any = [];
+	constructor(private carService: CarService ,private router: Router) {
 
-	constructor(private carService: CarService) {
 	}
 
 	ngOnInit(): void {
@@ -161,7 +165,7 @@ export class AddCarComponent implements OnInit {
 			securityExtras: this.car.securityExtras.toString(),
 			otherExtras: this.car.otherExtras.toString(),
 			price: this.car.price,
-			carImages:this.car.carImages
+			carImages:this.car.carImages.toString()
 		};
 
 		this.carService.create(data)
@@ -173,26 +177,22 @@ export class AddCarComponent implements OnInit {
 				error => {
 					console.log(error);
 				});
+		alert("Успешно създадохте нова обява за автомобил!");
+		this.router.navigate(['/carboard/']);
 	}
 
-	newCar(): void {
-		this.submitted = false;
-		this.car = {
-			brand: '',
-			model: '',
-			dateOfManifactory: '',
-			engineCapacity: '',
-			fuelType: '',
-			gearboxType: '',
-			horsePower: '',
-			bodyType: '',
-			additionalInformation: '',
-			comfortExtras: '',
-			securityExtras: '',
-			otherExtras: '',
-			price: '',
-			carThumbnail: '',
-			carImages: ''
-		};
+
+	goToNextStep(step: string) {
+		this.currentStep = step;
 	}
+
+	populatePicturesArray(data: any) {
+		data.forEach((carPicture: any) => {
+			this.carPictureArray.push(carPicture.url);
+		})
+		this.car.carImages = this.carPictureArray;
+
+		console.log(data);
+	}
+
 }

@@ -13,8 +13,10 @@ export class Car {
 	securityExtras?: any;
 	otherExtras?: any;
 	price?: string;
-	carThumbnail?:string;
-	carImages?:string;
+	carThumbnail?:any;
+	carImages?:any;
+	published?: boolean;
+
 
 
 }

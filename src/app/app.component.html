@@ -2,29 +2,26 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<a href="#" class="ms-2 navbar-brand">CarDealership</a>
 		<ul class="navbar-nav me-auto" routerLinkActive="active">
-			<li class="nav-item">
-				<a href="/home" class="nav-link" routerLink="home">Home </a>
+			<li class="nav-item" *ngIf="showListOfCars || !isLoggedIn">
+				<a href="/cars" class="nav-link" routerLink="cars">Автомобили</a>
 			</li>
-			<li class="nav-item">
-				<a href="/add-car" routerLink="add-car" class="nav-link">Add</a>
+<!--			<li class="nav-item" *ngIf="showFavouriteCarsBoard">-->
+<!--				<a href="/favourite-cars" class="nav-link" routerLink="favourite-cars">Бележник</a>-->
+<!--			</li>-->
+			<li class="nav-item" *ngIf="showCarBoard">
+				<a href="/carboard" routerLink="carboard" class="nav-link">Налични автомобили</a>
 			</li>
-			<li class="nav-item" *ngIf="showAdminBoard">
-				<a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-			</li>
-			<li class="nav-item" *ngIf="showModeratorBoard">
-				<a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-			</li>
-			<li class="nav-item">
-				<a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+			<li class="nav-item" *ngIf="showAddCar">
+				<a href="/add-car" routerLink="add-car" class="nav-link">Добави автомобил</a>
 			</li>
 		</ul>
 
 		<ul class="navbar-nav ms-auto" *ngIf="!isLoggedIn">
 			<li class="nav-item">
-				<a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+				<a href="/register" class="nav-link" routerLink="register">Регистрация</a>
 			</li>
 			<li class="nav-item">
-				<a href="/login" class="nav-link" routerLink="login">Log in</a>
+				<a href="/login" class="nav-link" routerLink="login">Вход</a>
 			</li>
 		</ul>
 
@@ -33,7 +30,7 @@
 				<a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
 			</li>
 			<li class="nav-item">
-				<a href class="nav-link" (click)="logout()">Log out</a>
+				<a href class="nav-link" (click)="logout()">Излез</a>
 			</li>
 		</ul>
 	</nav>

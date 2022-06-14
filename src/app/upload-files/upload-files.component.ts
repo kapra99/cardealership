@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {FileUploadService} from 'src/app/services/file-upload.service';
@@ -10,7 +10,7 @@ import {FileUploadService} from 'src/app/services/file-upload.service';
 })
 //Прочети input-output реализация
 export class UploadFilesComponent implements OnInit {
-	@Output()
+	@Output() newCarPicturesArray = new EventEmitter<any>();
 	selectedFiles?: FileList;
 	progressInfos: any[] = [];
 	message: string[] = [];
@@ -30,7 +30,6 @@ export class UploadFilesComponent implements OnInit {
 			err => {
 				this.responseData = JSON.parse(err.error).message;
 			})
-		console.log(this.responseData);
 	}
 
 	selectFiles(event: any): void {
@@ -51,8 +50,13 @@ export class UploadFilesComponent implements OnInit {
 						const msg = 'Uploaded the file successfully: ' + file.name;
 						this.message.push(msg);
 						this.fileInfos = this.uploadService.getFiles();
+						this.fileInfos.subscribe(
+							data => {
+								this.newCarPicturesArray.emit(data);
+							},
+							err => {
 
-						console.log(this.fileInfos);
+							})
 					}
 				},
 				(err: any) => {

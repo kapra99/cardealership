@@ -3,19 +3,22 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
-import {HomeComponent} from './home/home.component';
+
 import {ProfileComponent} from './profile/profile.component';
 import {BoardUserComponent} from './board-user/board-user.component';
 import {BoardModeratorComponent} from './board-moderator/board-moderator.component';
 import {BoardAdminComponent} from './board-admin/board-admin.component';
-import {CatalogItemDetailsComponent} from "./home/catalog/catalog-item-details/catalog-item-details.component";
+import {CatalogItemDetailsComponent} from "./cars/catalog/catalog-item-details/catalog-item-details.component";
 import {AddCarComponent} from "./add-car/add-car.component";
 import {UploadFilesComponent} from "./upload-files/upload-files.component";
+import {CarsComponent} from "./cars/cars.component";
+import {CarboardComponent} from "./carboard/carboard.component";
+import {CarDetailsComponent} from "./car-details/car-details.component";
 
 
 const routes: Routes = [
 	{path:'upload-files', component:UploadFilesComponent},
-	{path: 'home', component: HomeComponent},
+	{path: 'cars', component: CarsComponent},
 	{path: 'add-car', component: AddCarComponent},
 	{path: 'login', component: LoginComponent},
 	{path: 'register', component: RegisterComponent},
@@ -23,8 +26,11 @@ const routes: Routes = [
 	{path: 'user', component: BoardUserComponent},
 	{path: 'mod', component: BoardModeratorComponent},
 	{path: 'admin', component: BoardAdminComponent},
-	{path: '', redirectTo: 'home', pathMatch: 'full'},
+	{path: '', redirectTo: 'cars', pathMatch: 'full'},
 	{path: 'cardetails/:id', component: CatalogItemDetailsComponent},
+	{path: 'carboard', component: CarboardComponent},
+	{path: 'car-details/:id', component: CarDetailsComponent},
+
 ];
 
 @NgModule({

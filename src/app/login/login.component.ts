@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const { username, password } = this.form
 
     this.authService.login(username, password).subscribe(
       data => {
@@ -47,6 +47,12 @@ export class LoginComponent implements OnInit {
   }
 
   reloadPage(): void {
-    window.location.reload();
+	  if(this.tokenStorage.getUser().roles.toString() === "ROLE_ADMIN"){
+		  window.location.href="carboard"
+	  }
+	  if(this.tokenStorage.getUser().roles.toString() === "ROLE_USER"){
+		  window.location.href="cars"
+	  }
+
   }
 }

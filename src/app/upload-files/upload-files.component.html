@@ -1,17 +1,17 @@
-<div class="row">
-	<div class="col-8">
+<div class="row text-center mt-5">
+	<div class="col-4 offset-3">
 		<label class="btn btn-default p-0">
 			<input type="file" multiple (change)="selectFiles($event)" />
 		</label>
 	</div>
 
-	<div class="col-4">
+	<div class="col-1">
 		<button
 			class="btn btn-success btn-sm"
 			[disabled]="!selectedFiles"
 			(click)="uploadFiles()"
 		>
-			Upload
+			Качи
 		</button>
 	</div>
 </div>
@@ -39,14 +39,14 @@
 </div>
 
 <div class="card mt-3">
-	<div class="card-header">List of Files</div>
+	<div class="card-header">Изображения</div>
 
 	<ul
 		class="list-group list-group-flush"
 		*ngFor="let file of fileInfos | async"
 	>
 		<li class="list-group-item">
-			<code>{{file}}</code>
+<!--			<code>{{file}}</code>-->
 			<a href="{{ file.url }}">{{ file.name }}</a>
 		</li>
 	</ul>

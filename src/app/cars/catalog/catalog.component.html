@@ -2,11 +2,13 @@
 	<div class="row">
 		<div *ngFor="let car of cars" class="col-3">
 			<div class="card" style="width: 18rem;">
-				<img [src]="car.carThumbnail" class="card-img-top" alt="car">
+				<img [src]="sanitizeImageUrl(car.carImages)" class="card-img-top" alt="car">
 				<div class="card-body">
 					<h5 class="card-title">{{car.brand}} {{car.model}} </h5>
 					<p class="card-text">{{car.additionalInformation}}</p>
-					<a [routerLink]="['/cardetails/',car.id]" routerLinkActive="active" class="btn btn-primary">Find out more</a>
+					<div class="text-center">
+						<a [routerLink]="['/cardetails/',car.id]" routerLinkActive="active" class="btn btn-primary me-2">Още</a>
+					</div>
 				</div>
 			</div>
 		</div>

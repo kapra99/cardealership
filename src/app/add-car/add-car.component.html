@@ -1,99 +1,148 @@
 <div *ngIf="!submitted">
-	<app-upload-files></app-upload-files>
-	<form class="row mt-4 g-3">
-		<div class="col-md-6">
-			<label for="brand" class="form-label">Марка</label>
-			<input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="car.brand">
-		</div>
-		<div class="col-md-6">
-			<label for="model" class="form-label">Модел</label>
-			<input type="text" class="form-control" id="model" name="model" [(ngModel)]="car.model">
-		</div>
-		<div class="col-12">
-			<label for="dateOfManifactory" class="form-label">Дата на производство</label>
-			<input type="date" class="form-control" id="dateOfManifactory" name="dateOfManifactory"
-				   [(ngModel)]="car.dateOfManifactory">
-		</div>
-		<div class="col-12">
-			<label for="engineCapacity" class="form-label">Кубатура на двигателя</label>
-			<input type="number" min="0" class="form-control" id="engineCapacity" name="engineCapacity"
-				   [(ngModel)]="car.engineCapacity">
-		</div>
-		<div class="col-md-4">
-			<label for="fuelType" class="form-label">Вид гориво</label>
-			<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType" [(ngModel)]="car.fuelType">
-				<option *ngFor="let fuel of fuels" [value]="fuel.value">
-					{{fuel.viewValue}}
-				</option>
-			</select>
-		</div>
-		<div class="col-md-4">
-			<label for="gearboxType" class="form-label">Тип на скоростната кутия</label>
-			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType"
-					[(ngModel)]="car.gearboxType">
-				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">
-					{{gearbox.viewValue}}
-				</option>
-			</select>
-		</div>
-		<div class="col-md-4">
-			<label for="bodyType" class="form-label">Тип на купето</label>
-			<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType" [(ngModel)]="car.bodyType">
-				<option *ngFor="let bodyType of bodyTypes" [value]="bodyType.value">
-					{{bodyType.viewValue}}
-				</option>
-			</select>
-		</div>
-		<div class="col-12">
-			<label for="horsePower" class="form-label">Мощност(к.с)</label>
-			<input type="number" min="0" class="form-control" id="horsePower" name="horsePower" [(ngModel)]="car.horsePower">
-		</div>
-		<div class="col-12">
-			<label for="additionalInformation" class="form-label">Допълнителна информация</label>
-			<textarea class="form-control" id="additionalInformation" rows="3" name="additionalInformation"
-					  [(ngModel)]="car.additionalInformation"></textarea>
-		</div>
-		<div class="col-12">
-			<label for="price" class="form-label">Цена</label>
-			<input type="number" min="0" class="form-control" id="price" name="price" [(ngModel)]="car.price">
-		</div>
-		<div class="col-md-4">
-			<h5>Комфорт</h5>
-			<div class="form-check" *ngFor="let comfortextra of comfortextras; let i = index;">
-					<input class="form-check-input" type="checkbox" [value]="comfortextra.value" (change)="selectedComfortExtras(comfortextra.value)" id="{{'comfortExtraCheckbox'+i}}">
-					<label class="form-check-label" for="{{'comfortExtraCheckbox'+i}}">
-						{{comfortextra.viewValue}}
-					</label>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<h5>Сигурност</h5>
-			<div class="form-check" *ngFor="let securityextra of securityextras; let i = index;">
-				<input class="form-check-input" type="checkbox" [value]="securityextra.value" (change)="selectedSecurityExtras(securityextra.value)" id="{{'securityExtraCheckbox'+i}}">
-				<label class="form-check-label" for="{{'securityExtraCheckbox'+i}}">
-					{{securityextra.viewValue}}
-				</label>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<h5>Сигурност</h5>
-			<div class="form-check" *ngFor="let otherextra of otherextras; let i = index;">
-				<input class="form-check-input" type="checkbox" [value]="otherextra.value" (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
-				<label class="form-check-label" for="{{'otherExtraCheckbox'+i}}">
-					{{otherextra.viewValue}}
-				</label>
-			</div>
-		</div>
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<form class="mt-4 g-3">
+				<div class="step-1-wrapper" *ngIf="currentStep=='1'">
 
 
+					<div class="row">
+						<div class="col-md-6">
+							<label for="brand" class="form-label">Марка</label>
+							<input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="car.brand">
+						</div>
+						<div class="col-md-6">
+							<label for="model" class="form-label">Модел</label>
+							<input type="text" class="form-control" id="model" name="model" [(ngModel)]="car.model">
+						</div>
+					</div>
 
-		<div class="col-12 text-center">
-			<button (click)="saveCar()" class="mt-3 mb-3 btn btn-primary">Добави нова кола</button>
-			<div *ngIf="submitted">
-				{{this.submitted}}
-				<h4>Car was submitted successfully!</h4>
-				<button class="btn btn-success" (click)="newCar()">Add</button>
-			</div>
+					<div class="col-12">
+						<label for="dateOfManifactory" class="form-label">Дата на производство</label>
+						<input type="date" class="form-control" id="dateOfManifactory" name="dateOfManifactory"
+							   [(ngModel)]="car.dateOfManifactory">
+					</div>
+					<div class="mt-3 d-flex justify-content-end">
+						<button type="button" class="btn btn-primary" (click)="goToNextStep('2')">Следваща стъпка
+						</button>
+					</div>
+				</div>
+
+				<div class="step-2-wrapper" *ngIf="currentStep=='2'">
+					<div class="row">
+						<div class="col-6">
+							<label for="engineCapacity" class="form-label">Кубатура на двигателя</label>
+							<input type="number" min="0" class="form-control" id="engineCapacity" name="engineCapacity"
+								   [(ngModel)]="car.engineCapacity">
+						</div>
+						<div class="col-6">
+							<label for="horsePower" class="form-label">Мощност(к.с)</label>
+							<input type="number" min="0" class="form-control" id="horsePower" name="horsePower"
+								   [(ngModel)]="car.horsePower">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<label for="fuelType" class="form-label">Вид гориво</label>
+							<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType"
+									[(ngModel)]="car.fuelType">
+								<option *ngFor="let fuel of fuels" [value]="fuel.value">
+									{{fuel.viewValue}}
+								</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="gearboxType" class="form-label">Тип на скоростната кутия</label>
+							<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType"
+									[(ngModel)]="car.gearboxType">
+								<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">
+									{{gearbox.viewValue}}
+								</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="bodyType" class="form-label">Тип на купето</label>
+							<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType"
+									[(ngModel)]="car.bodyType">
+								<option *ngFor="let bodyType of bodyTypes" [value]="bodyType.value">
+									{{bodyType.viewValue}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="mt-3 d-flex justify-content-end">
+						<button type="button" class="btn btn-primary" (click)="goToNextStep('3')">Следваща стъпка
+						</button>
+					</div>
+				</div>
+
+				<div class="step-3-wrapper" *ngIf="currentStep=='3'">
+					<div class="row">
+						<div class="col-md-4">
+							<h5>Комфорт</h5>
+							<div class="form-check" *ngFor="let comfortextra of comfortextras; let i = index;">
+								<input class="form-check-input" type="checkbox" [value]="comfortextra.value"
+									   (change)="selectedComfortExtras(comfortextra.value)"
+									   id="{{'comfortExtraCheckbox'+i}}">
+								<label class="form-check-label" for="{{'comfortExtraCheckbox'+i}}">
+									{{comfortextra.viewValue}}
+								</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<h5>Сигурност</h5>
+							<div class="form-check" *ngFor="let securityextra of securityextras; let i = index;">
+								<input class="form-check-input" type="checkbox" [value]="securityextra.value"
+									   (change)="selectedSecurityExtras(securityextra.value)"
+									   id="{{'securityExtraCheckbox'+i}}">
+								<label class="form-check-label" for="{{'securityExtraCheckbox'+i}}">
+									{{securityextra.viewValue}}
+								</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<h5>Други</h5>
+							<div class="form-check" *ngFor="let otherextra of otherextras; let i = index;">
+								<input class="form-check-input" type="checkbox" [value]="otherextra.value"
+									   (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
+								<label class="form-check-label" for="{{'otherExtraCheckbox'+i}}">
+									{{otherextra.viewValue}}
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="mt-3 d-flex justify-content-end">
+						<button type="button" class="btn btn-primary" (click)="goToNextStep('4')">Следваща стъпка
+						</button>
+					</div>
+				</div>
+
+
+				<div class="step-4-wrapper" *ngIf="currentStep=='4'">
+					<div class="row">
+						<div class="col-12">
+							<label for="price" class="form-label">Цена</label>
+							<input type="number" min="0" class="form-control" id="price" name="price"
+								   [(ngModel)]="car.price">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<label for="additionalInformation" class="form-label">Допълнителна информация</label>
+							<textarea class="form-control" id="additionalInformation" rows="3"
+									  name="additionalInformation"
+									  [(ngModel)]="car.additionalInformation"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<app-upload-files (newCarPicturesArray)="populatePicturesArray($event)" ></app-upload-files>
+					</div>
+					<div class="mt-3 d-flex justify-content-end">
+						<button type="button" class="btn btn-primary" (click)="saveCar()">Добави нов автомобил
+						</button>
+					</div>
+				</div>
+
+			</form>
 		</div>
-	</form>
+	</div>
 </div>

@@ -3,6 +3,7 @@ import {CarService} from 'src/app/services/car.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Car} from 'src/app/models/car.model';
 
+
 @Component({
 	selector: 'app-catalog-item-details',
 	templateUrl: './catalog-item-details.component.html',
@@ -24,7 +25,8 @@ export class CatalogItemDetailsComponent implements OnInit {
 		otherExtras: '',
 		price: '',
 		carThumbnail: '',
-		carImages: ''
+		carImages: '',
+		published: false
 	};
 	message = '';
 	carouselArray: any = [];
@@ -59,9 +61,7 @@ export class CatalogItemDetailsComponent implements OnInit {
 					}
 					if (this.currentCar.carImages) {
 						this.carouselArray = this.currentCar.carImages.split(',');
-						console.log(this.carouselArray);
 					}
-					console.log(data);
 				},
 				error => {
 					console.log(error);

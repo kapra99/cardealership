@@ -67,7 +67,7 @@
           #password="ngModel"
         />
         <div class="alert-danger" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors.required">Парола</div>
+          <div *ngIf="password.errors.required">Парола е задължителна</div>
           <div *ngIf="password.errors.minlength">
 			  Паролата трябва да е поне 6 символа
           </div>

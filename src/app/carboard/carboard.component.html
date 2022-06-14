@@ -1,0 +1,49 @@
+<div class="list row">
+	<div class="col-md-6 mt-3">
+		<h4>Списък с автомобили</h4>
+		<ul class="list-group">
+			<li
+				class="list-group-item"
+				*ngFor="let car of cars; let i = index"
+				[class.active]="i == currentIndex"
+				(click)="setActiveCar(car, i)"
+			>
+				{{ car.brand }} {{car.model}}
+
+			</li>
+		</ul>
+	</div>
+	<div class="col-md-6 text-center">
+		<div *ngIf="currentCar.id" class="col-12">
+			<h4>Автомобил</h4>
+			<div class="mt-2">
+				<img [src]="sanitizeImageUrl(currentCar.carImages)" class="card-img-top w-50 " alt="car">
+			</div>
+			<div class="mt-2">
+				<label><strong>Марка:</strong></label> {{ currentCar.brand }}
+			</div>
+			<div class="mt-2">
+				<label><strong>Модел:</strong></label>
+				{{ currentCar.model }}
+			</div>
+			<div class="mt-2">
+				<label><strong>Дата на производство:</strong></label>
+				{{ currentCar.dateOfManifactory}}
+			</div>
+<!--			<div>-->
+<!--				<label><strong>Status:</strong></label>-->
+<!--				{{ currentTutorial.published ? "Published" : "Pending" }}-->
+<!--			</div>-->
+			<a class="mt-2 me-2 btn btn-warning" routerLink="/car-details/{{ currentCar.id }}">
+				Редактирай
+			</a><a class="mt-2 btn btn-danger" routerLink="/car-details/{{ currentCar.id }}">
+			Премахни
+		</a>
+		</div>
+		<div *ngIf="!currentCar">
+			<br />
+			<p>Please click on a Tutorial...</p>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,102 @@
+<div>
+	<form class="row mt-4 g-3">
+		<div class="col-md-6">
+			<label for="brand" class="form-label">Марка</label>
+			<input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="currentCar.brand">
+		</div>
+		<div class="col-md-6">
+			<label for="model" class="form-label">Модел</label>
+			<input type="text" class="form-control" id="model" name="model" [(ngModel)]="currentCar.model">
+		</div>
+		<div class="col-12">
+			<label for="dateOfManifactory" class="form-label">Дата на производство</label>
+			<input type="date" class="form-control" id="dateOfManifactory" name="dateOfManifactory"
+				   [(ngModel)]="currentCar.dateOfManifactory">
+		</div>
+		<div class="col-12">
+			<label for="engineCapacity" class="form-label">Кубатура на двигателя</label>
+			<input type="number" min="0" class="form-control" id="engineCapacity" name="engineCapacity"
+				   [(ngModel)]="currentCar.engineCapacity">
+		</div>
+		<div class="col-md-4">
+			<label for="fuelType" class="form-label">Вид гориво</label>
+			<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType" [(ngModel)]="currentCar.fuelType">
+				<option *ngFor="let fuel of fuels" [value]="fuel.value">
+					{{fuel.viewValue}}
+				</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<label for="gearboxType" class="form-label">Тип на скоростната кутия</label>
+			<select id="gearboxType" class="form-select" aria-label="Gearbox" name="gearboxType"
+					[(ngModel)]="currentCar.gearboxType">
+				<option *ngFor="let gearbox of gearboxes" [value]="gearbox.value">
+					{{gearbox.viewValue}}
+				</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<label for="bodyType" class="form-label">Тип на купето</label>
+			<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType" [(ngModel)]="currentCar.bodyType">
+				<option *ngFor="let bodyType of bodyTypes" [value]="bodyType.value">
+					{{bodyType.viewValue}}
+				</option>
+			</select>
+		</div>
+		<div class="col-12">
+			<label for="horsePower" class="form-label">Мощност(к.с)</label>
+			<input type="number" min="0" class="form-control" id="horsePower" name="horsePower" [(ngModel)]="currentCar.horsePower">
+		</div>
+		<div class="col-12">
+			<label for="additionalInformation" class="form-label">Допълнителна информация</label>
+			<textarea class="form-control" id="additionalInformation" rows="3" name="additionalInformation"
+					  [(ngModel)]="currentCar.additionalInformation"></textarea>
+		</div>
+		<div class="col-12">
+			<label for="price" class="form-label">Цена</label>
+			<input type="number" min="0" class="form-control" id="price" name="price" [(ngModel)]="currentCar.price">
+		</div>
+		<div class="col-md-4">
+			<h5>Комфорт</h5>
+			<div class="form-check" *ngFor="let comfortextra of comfortextras; let i = index;">
+				<input class="form-check-input" type="checkbox" [value]="comfortextra.value" (change)="selectedComfortExtras(comfortextra.value)" id="{{'comfortExtraCheckbox'+i}}">
+				<label class="form-check-label" for="{{'comfortExtraCheckbox'+i}}">
+					{{comfortextra.viewValue}}
+				</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h5>Сигурност</h5>
+			<div class="form-check" *ngFor="let securityextra of securityextras; let i = index;">
+				<input class="form-check-input" type="checkbox" [value]="securityextra.value" (change)="selectedSecurityExtras(securityextra.value)" id="{{'securityExtraCheckbox'+i}}">
+				<label class="form-check-label" for="{{'securityExtraCheckbox'+i}}">
+					{{securityextra.viewValue}}
+				</label>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<h5>Други</h5>
+			<div class="form-check" *ngFor="let otherextra of otherextras; let i = index;">
+				<input class="form-check-input" type="checkbox" [value]="otherextra.value" (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
+				<label class="form-check-label" for="{{'otherExtraCheckbox'+i}}">
+					{{otherextra.viewValue}}
+				</label>
+			</div>
+		</div>
+
+
+		<div class="col-12 text-center">
+			<button class="btn btn-warning mb-3 me-2" (click)="updateCar()">Редактирай</button>
+			<button class="btn btn-danger mb-3" (click)="deleteCar()">Премахни</button>
+		</div>
+	</form>
+
+	<div class="alert alert-success" *ngIf="isSuccessful">
+		Успешно редактирахте автомобила!
+	</div>
+</div>
+
+
+
+
+

@@ -20,7 +20,8 @@
 		</div>
 		<div class="col-md-4">
 			<label for="fuelType" class="form-label">Вид гориво</label>
-			<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType" [(ngModel)]="currentCar.fuelType">
+			<select id="fuelType" class="form-select" aria-label="Fuel" name="fuelType"
+					[(ngModel)]="currentCar.fuelType">
 				<option *ngFor="let fuel of fuels" [value]="fuel.value">
 					{{fuel.viewValue}}
 				</option>
@@ -37,7 +38,8 @@
 		</div>
 		<div class="col-md-4">
 			<label for="bodyType" class="form-label">Тип на купето</label>
-			<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType" [(ngModel)]="currentCar.bodyType">
+			<select id="bodyType" class="form-select" aria-label="BodyType" name="bodyType"
+					[(ngModel)]="currentCar.bodyType">
 				<option *ngFor="let bodyType of bodyTypes" [value]="bodyType.value">
 					{{bodyType.viewValue}}
 				</option>
@@ -45,7 +47,8 @@
 		</div>
 		<div class="col-12">
 			<label for="horsePower" class="form-label">Мощност(к.с)</label>
-			<input type="number" min="0" class="form-control" id="horsePower" name="horsePower" [(ngModel)]="currentCar.horsePower">
+			<input type="number" min="0" class="form-control" id="horsePower" name="horsePower"
+				   [(ngModel)]="currentCar.horsePower">
 		</div>
 		<div class="col-12">
 			<label for="additionalInformation" class="form-label">Допълнителна информация</label>
@@ -56,19 +59,27 @@
 			<label for="price" class="form-label">Цена</label>
 			<input type="number" min="0" class="form-control" id="price" name="price" [(ngModel)]="currentCar.price">
 		</div>
+
 		<div class="col-md-4">
 			<h5>Комфорт</h5>
 			<div class="form-check" *ngFor="let comfortextra of comfortextras; let i = index;">
-				<input class="form-check-input" type="checkbox" [value]="comfortextra.value" (change)="selectedComfortExtras(comfortextra.value)" id="{{'comfortExtraCheckbox'+i}}">
+				<input class="form-check-input" type="checkbox" [checked]="comfortextra.checked"
+					   [value]="comfortextra.value"
+					   (change)="selectedComfortExtras(comfortextra.value)"
+					   id="{{'comfortExtraCheckbox'+i}}">
 				<label class="form-check-label" for="{{'comfortExtraCheckbox'+i}}">
 					{{comfortextra.viewValue}}
 				</label>
 			</div>
+
 		</div>
 		<div class="col-md-4">
 			<h5>Сигурност</h5>
 			<div class="form-check" *ngFor="let securityextra of securityextras; let i = index;">
-				<input class="form-check-input" type="checkbox" [value]="securityextra.value" (change)="selectedSecurityExtras(securityextra.value)" id="{{'securityExtraCheckbox'+i}}">
+				<input class="form-check-input" type="checkbox"
+					   [checked]="securityextra.checked"
+					   [value]="securityextra.value"
+					   (change)="selectedSecurityExtras(securityextra.value)" id="{{'securityExtraCheckbox'+i}}">
 				<label class="form-check-label" for="{{'securityExtraCheckbox'+i}}">
 					{{securityextra.viewValue}}
 				</label>
@@ -77,7 +88,10 @@
 		<div class="col-md-4">
 			<h5>Други</h5>
 			<div class="form-check" *ngFor="let otherextra of otherextras; let i = index;">
-				<input class="form-check-input" type="checkbox" [value]="otherextra.value" (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
+				<input class="form-check-input" type="checkbox"
+					   [checked]="otherextra.checked"
+					   [value]="otherextra.value"
+					   (change)="selectedOtherExtras(otherextra.value)" id="{{'otherExtraCheckbox'+i}}">
 				<label class="form-check-label" for="{{'otherExtraCheckbox'+i}}">
 					{{otherextra.viewValue}}
 				</label>
@@ -86,7 +100,7 @@
 
 
 		<div class="col-12 text-center">
-			<button class="btn btn-warning mb-3 me-2" (click)="updateCar()">Редактирай</button>
+			<button class="btn btn-warning mb-3 me-2" (click)="saveUpdatedCar()">Редактирай</button>
 			<button class="btn btn-danger mb-3" (click)="deleteCar()">Премахни</button>
 		</div>
 	</form>

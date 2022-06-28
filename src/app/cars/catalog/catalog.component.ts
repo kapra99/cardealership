@@ -17,7 +17,7 @@ export class CatalogComponent implements OnInit {
 	constructor(private carService: CarService, private sanitizer: DomSanitizer) {
 	}
 	sanitizeImageUrl(imageUrl:string): SafeUrl {
-		console.log(imageUrl.split(',')[0]);
+		// console.log(imageUrl.split(',')[0]);
 		return this.sanitizer.bypassSecurityTrustUrl(imageUrl.split(',')[0].replace('"',''));
 	}
 
@@ -30,7 +30,7 @@ export class CatalogComponent implements OnInit {
 			.subscribe(
 				data => {
 					this.cars = data;
-					console.log(data);
+					// console.log(data);
 				},
 				error => {
 					console.log(error);

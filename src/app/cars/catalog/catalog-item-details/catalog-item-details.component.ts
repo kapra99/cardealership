@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CarService} from 'src/app/services/car.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Car} from 'src/app/models/car.model';
-
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-catalog-item-details',
@@ -36,7 +36,12 @@ export class CatalogItemDetailsComponent implements OnInit {
 	constructor(
 		private carService: CarService,
 		private route: ActivatedRoute,
+		private sanitizer: DomSanitizer,
 		private router: Router) {
+	}
+	sanitizeImageUrl(imageUrl:string): SafeUrl {
+		// console.log(imageUrl.split(',')[0]);
+		return this.sanitizer.bypassSecurityTrustUrl(imageUrl.split(',')[0].replace('"',''));
 	}
 
 	ngOnInit(): void {

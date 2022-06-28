@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CarService } from 'src/app/services/car.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Car } from 'src/app/models/car.model';
+import {Component, OnInit} from '@angular/core';
+import {CarService} from 'src/app/services/car.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Car} from 'src/app/models/car.model';
 
 interface Fuel {
 	value: string;
@@ -21,23 +21,31 @@ interface BodyType {
 interface ComfortExtra {
 	value: string;
 	viewValue: string;
+	checked?: boolean;
 }
 
 interface SecurityExtra {
 	value: string;
 	viewValue: string;
+	checked?: boolean;
 }
 interface OtherExtras {
 	value: string;
 	viewValue: string;
+	checked?: boolean;
 }
 
 @Component({
-  selector: 'app-car-details',
-  templateUrl: './car-details.component.html',
-  styleUrls: ['./car-details.component.css']
+	selector: 'app-car-details',
+	templateUrl: './car-details.component.html',
+	styleUrls: ['./car-details.component.css']
 })
 export class CarDetailsComponent implements OnInit {
+	tempCar: any = {
+		comfortExtras:[],
+		securityExtras:[],
+		otherExtras:[]
+	};
 	currentCar: Car = {
 		brand: '',
 		model: '',
@@ -52,9 +60,8 @@ export class CarDetailsComponent implements OnInit {
 		securityExtras: [],
 		otherExtras: [],
 		price: '',
-		carThumbnail: '',
-		carImages: '',
-		published: false
+		// carThumbnail: '',
+		// carImages: '',
 
 	};
 	fuels: Fuel[] = [
@@ -122,78 +129,110 @@ export class CarDetailsComponent implements OnInit {
 		{value: ' Теглич', viewValue: 'Теглич'},
 		{value: ' 7 места (6+1)', viewValue: '7 места (6+1)'}
 	];
+	comfExtrs: any;
+	secExtrs: any;
+	othExtras: any;
 	message = '';
 	isSuccessful = false;
-	carouselArray: any = [];
+
 	constructor(
 		private carService: CarService,
 		private route: ActivatedRoute,
-		private router: Router) { }
+		private router: Router) {
+	}
+
 	ngOnInit(): void {
 		this.message = '';
 		this.getCar(this.route.snapshot.params.id);
 	}
+
 	selectedComfortExtras(value: any) {
-		this.currentCar.comfortExtras.push(value);
+		this.tempCar.comfortExtras.push(value);
+		console.log(this.tempCar.comfortExtras);
+
 	}
+
 	selectedSecurityExtras(value: any) {
-		this.currentCar.securityExtras.push(value);
-		// console.log(value);
-		// console.log(this.car.comfortExtras);
+		this.tempCar.securityExtras.push(value);
+
 	}
+
 	selectedOtherExtras(value: any) {
-		this.currentCar.otherExtras.push(value);
-		// console.log(value);
-		// console.log(this.car.comfortExtras);
+		this.tempCar.otherExtras.push(value);
 	}
+
 	getCar(id: string): void {
 		this.carService.get(id)
 			.subscribe(
 				data => {
 					this.currentCar = data;
-					if (this.currentCar.carImages) {
-						this.carouselArray = this.currentCar.carImages.split(',');
-						console.log(this.carouselArray);
-					}
-					console.log(data);
+					this.comfExtrs = data.comfortExtras;
+					this.comfExtrs.replaceAll('"', '');
+					this.comfExtrs.split(',');
+					this.comfortextras.forEach((extra: any) => {
+						extra.checked = this.comfExtrs.includes(extra.value);
+						if (extra.checked) {
+							this.tempCar.comfortExtras.push(extra.value);
+						}
+
+					})
+
+					this.secExtrs = data.securityExtras;
+					this.secExtrs.replaceAll('"', '');
+					this.secExtrs.split(',');
+					this.securityextras.forEach((extra: any) => {
+						extra.checked = this.secExtrs.includes(extra.value);
+						if (extra.checked) {
+							this.tempCar.securityExtras.push(extra.value);
+						}
+					})
+
+					this.othExtras = data.otherExtras;
+					this.othExtras.replaceAll('"', '');
+					this.othExtras.split(',');
+					this.otherextras.forEach((extra: any) => {
+						extra.checked = this.othExtras.includes(extra.value);
+						if (extra.checked) {
+							this.tempCar.otherExtras.push(extra.value);
+						}
+					})
 				},
 				error => {
 					console.log(error);
 				});
 	}
-	updatePublished(status: boolean): void {
+
+	saveUpdatedCar(): void {
 		const data = {
 			brand: this.currentCar.brand,
 			model: this.currentCar.model,
-			published: status
+			dateOfManifactory: this.currentCar.dateOfManifactory,
+			engineCapacity: this.currentCar.engineCapacity,
+			fuelType: this.currentCar.fuelType,
+			gearboxType: this.currentCar.gearboxType,
+			horsePower: this.currentCar.horsePower,
+			bodyType: this.currentCar.bodyType,
+			additionalInformation: this.currentCar.additionalInformation,
+			comfortExtras: this.tempCar.comfortExtras.toString(),
+			securityExtras: this.tempCar.securityExtras.toString(),
+			otherExtras: this.tempCar.otherExtras.toString(),
+			price: this.currentCar.price,
+			// currentCarImages:this.currentCar.carImages.toString()
 		};
-		this.message = '';
+
 		this.carService.update(this.currentCar.id, data)
 			.subscribe(
 				response => {
-					this.currentCar.published = status;
 					console.log(response);
-					this.message = response.message ? response.message : 'The status was updated successfully!';
+					// this.submitted = true;
 				},
 				error => {
 					console.log(error);
 				});
+		alert("Успешно редактирахте избрания от вас автомобил!");
+		this.router.navigate(['/carboard/']);
 	}
-	updateCar(): void {
-		this.message = '';
-		this.carService.update(this.currentCar.id, this.currentCar)
-			.subscribe(
-				response => {
-					console.log(response);
-					this.isSuccessful = true;
-					this.message = response.message ? response.message : 'This tutorial was updated successfully!';
-					alert("Успешно редактирахте избрания от вас автомобил!");
-					this.router.navigate(['/carboard/']);
-				},
-				error => {
-					console.log(error);
-				});
-	}
+
 	deleteCar(): void {
 		this.carService.delete(this.currentCar.id, this.currentCar)
 			.subscribe(

@@ -21,8 +21,6 @@ import {CarboardComponent} from './carboard/carboard.component';
 import {CarDetailsComponent} from './car-details/car-details.component';
 
 
-
-
 @NgModule({
 	declarations: [
 		CarsComponent,
@@ -38,7 +36,7 @@ import {CarDetailsComponent} from './car-details/car-details.component';
 		CatalogItemDetailsComponent,
 		AddCarComponent,
 		CarboardComponent,
-		CarDetailsComponent
+		CarDetailsComponent,
 	],
 	imports: [
 		BrowserModule,

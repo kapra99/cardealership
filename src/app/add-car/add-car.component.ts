@@ -192,7 +192,7 @@ export class AddCarComponent implements OnInit {
 		})
 		this.car.carImages = this.carPictureArray;
 
-		console.log(data);
+		// console.log(data);
 	}
 
 }

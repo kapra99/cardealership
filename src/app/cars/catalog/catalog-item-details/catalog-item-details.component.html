@@ -5,7 +5,7 @@
 				 data-bs-interval="false">
 				<div class="carousel-inner">
 					<div *ngFor="let carouselImage of carouselArray; let i = index" class="carousel-item" [ngClass]="{'active':i == 1}">
-						<img [src]="carouselImage" class="d-block w-100" alt="car">
+						<img [src]="sanitizeImageUrl(carouselImage)" class="d-block w-100" alt="car">
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"

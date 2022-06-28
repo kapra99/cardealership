@@ -21,7 +21,7 @@ export class CarboardComponent implements OnInit {
 
 	}
 	sanitizeImageUrl(imageUrl:string): SafeUrl {
-		console.log(imageUrl.split(',')[0]);
+		// console.log(imageUrl.split(',')[0]);
 		return this.sanitizer.bypassSecurityTrustUrl(imageUrl.split(',')[0].replace('"',''));
 	}
 	ngOnInit(): void {

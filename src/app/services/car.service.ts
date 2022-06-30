@@ -23,10 +23,4 @@ export class CarService {
 	delete(id: any, data: any): Observable<any> {
 		return this.http.delete(`${baseUrl}/${id}`);
 	}
-	// deleteAll(): Observable<any> {
-	// 	return this.http.delete(baseUrl);
-	// }
-	// findByTitle(title: any): Observable<Car[]> {
-	// 	return this.http.get<Car[]>(`${baseUrl}?title=${title}`);
-	// }
 }

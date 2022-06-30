@@ -126,6 +126,7 @@ export class AddCarComponent implements OnInit {
 	];
 	currentStep:string = '1';
 	carPictureArray:any = [];
+	currentCarPicturesArray = [];
 	constructor(private carService: CarService ,private router: Router) {
 
 	}
@@ -171,7 +172,7 @@ export class AddCarComponent implements OnInit {
 		this.carService.create(data)
 			.subscribe(
 				response => {
-					console.log(response);
+					// console.log(response);
 					this.submitted = true;
 				},
 				error => {
@@ -186,13 +187,16 @@ export class AddCarComponent implements OnInit {
 		this.currentStep = step;
 	}
 
-	populatePicturesArray(data: any) {
-		data.forEach((carPicture: any) => {
+	populatePicturesArray(selectedPhotos: any) {
+
+		this.currentCarPicturesArray = selectedPhotos;
+		console.log(this.currentCarPicturesArray)
+		selectedPhotos.forEach((carPicture: any) => {
 			this.carPictureArray.push(carPicture.url);
 		})
 		this.car.carImages = this.carPictureArray;
 
-		// console.log(data);
 	}
+
 
 }

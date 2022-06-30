@@ -8,10 +8,11 @@ import {FileUploadService} from 'src/app/services/file-upload.service';
 	templateUrl: './upload-files.component.html',
 	styleUrls: ['./upload-files.component.css']
 })
-//Прочети input-output реализация
+
 export class UploadFilesComponent implements OnInit {
 	@Output() newCarPicturesArray = new EventEmitter<any>();
 	selectedFiles?: FileList;
+	selectedPhotos?:any;
 	progressInfos: any[] = [];
 	message: string[] = [];
 	responseData: any;
@@ -25,7 +26,8 @@ export class UploadFilesComponent implements OnInit {
 		this.uploadService.getFiles().subscribe(
 			data => {
 				this.responseData = data;
-				console.log(data);
+				this.responseData.splice(0);
+				console.log(this.responseData);
 			},
 			err => {
 				this.responseData = JSON.parse(err.error).message;
@@ -52,7 +54,14 @@ export class UploadFilesComponent implements OnInit {
 						this.fileInfos = this.uploadService.getFiles();
 						this.fileInfos.subscribe(
 							data => {
-								this.newCarPicturesArray.emit(data);
+
+								let counter = this.selectedFiles?.length;
+								// @ts-ignore
+								// console.log(data);
+								// @ts-ignore
+								this.selectedPhotos = data.slice(-counter);
+
+								this.newCarPicturesArray.emit(this.selectedPhotos);
 							},
 							err => {
 
@@ -70,7 +79,6 @@ export class UploadFilesComponent implements OnInit {
 
 	uploadFiles(): void {
 		this.message = [];
-
 		if (this.selectedFiles) {
 			for (let i = 0; i < this.selectedFiles.length; i++) {
 				this.upload(i, this.selectedFiles[i]);
